@@ -112,4 +112,48 @@ interface Product {
   ];
   
   console.log(getMostExpensiveProduct(products));  
-  // Output: { name: "Bag", price: 50 }
+
+  // ##########################//
+
+  enum Day {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+  }
+  
+function getDayType(day: Day): string{
+if(day===5 || day===6){
+    return 'Weekend'
+}
+else{
+    return 'Weekday'
+}
+  }
+  console.log(getDayType(Day.Monday));
+console.log(getDayType(Day.Sunday));
+
+// ##########################//
+const createPromise=(n:number):Promise<number>=>{
+    return new Promise<number>((resolve,reject)=>{
+        if(n>0){
+        const data:number=n*n;
+            setTimeout(() => {
+                resolve(data);
+            }, 1000);
+        
+    }
+        else{
+            reject('Negative number not allowed')
+        }
+    })
+}
+async function squareAsync(n: number): Promise<number>{
+    const data=await createPromise(n);
+    return data;
+}
+squareAsync(4).then(console.log);  
+squareAsync(-3).catch(console.error);   
